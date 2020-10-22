@@ -12,7 +12,7 @@ import MobileRequest from './components/MobileRequest';
 import { IMobileRequestProps } from './components/IMobileRequestProps';
 
 export interface IMobileRequestWebPartProps {
-  description: string;
+  listName: string;
 }
 
 export default class MobileRequestWebPart extends BaseClientSideWebPart<IMobileRequestWebPartProps> {
@@ -21,7 +21,10 @@ export default class MobileRequestWebPart extends BaseClientSideWebPart<IMobileR
     const element: React.ReactElement<IMobileRequestProps> = React.createElement(
       MobileRequest,
       {
-        description: this.properties.description
+        listName: this.properties.listName,
+        spHttpClient: this.context.spHttpClient,  
+        siteUrl: this.context.pageContext.web.absoluteUrl,
+        context:this.context,  
       }
     );
 
@@ -41,14 +44,14 @@ export default class MobileRequestWebPart extends BaseClientSideWebPart<IMobileR
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: strings.ListNameFieldLabel
           },
           groups: [
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('listName', {
+                  label: strings.ListNameFieldLabel
                 })
               ]
             }
