@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "mobile-request-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/mobileRequest/MobileRequestWebPart.js",
+          "manifest": "./src/webparts/mobileRequest/MobileRequestWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MobileRequestWebPartStrings": "lib/webparts/mobileRequest/loc/{locale}.js"
+  }
+}
